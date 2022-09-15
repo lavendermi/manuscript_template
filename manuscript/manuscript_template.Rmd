@@ -23,6 +23,10 @@ output:
 # output: word_document
 
 ## Specify your csl here. You can use local or remote (local is better)
+## sources of csl files:
+## https://github.com/citation-style-language/styles
+## https://www.zotero.org/styles
+
 # csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ecology-letters.csl
 csl: https://www.zotero.org/styles/ecology-letters
 # csl: "ecology-letters.csl"
