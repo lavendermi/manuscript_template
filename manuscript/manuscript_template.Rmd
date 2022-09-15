@@ -40,7 +40,7 @@ csl: https://www.zotero.org/styles/ecology-letters
 
 # The .bib file allows you to add citations without Zotero and to share your
 # library with co-authors so that everyone has the same list of potential
-# references. Co-authors can just a new entries to the .bib file if they think
+# references. Co-authors can just add new entries to the .bib file if they think
 # a citation is relevant
 bibliography: references.bib
 ---
@@ -128,13 +128,15 @@ Statistical analyses were carried out in R 3.4.0 (R Core Team 2017). All code al
 
 # References
 
+```{=html}
 <!-- this littel code block is a comment that won't show up in the knitted 
 document. It is a good way to add hidden things and comments to your RMarkdown 
 document. For example... -->
-
+```
+```{=html}
 <!-- this little chunk of code (the ::: stuff below) forces the references to show up here. If you
 don't use this then they are put at the end of the document by default -->
-
+```
 ::: {#refs}
 :::
 
@@ -144,7 +146,9 @@ don't use this then they are put at the end of the document by default -->
 
 **Table 1.** Mean body mass of penguins on different islands over time.
 
-```{r table_01, echo=FALSE, message=FALSE, warning=FALSE, paged.print=TRUE}
+Note: for the word version the `kable` does not output correctly. You could try using `flextable` package instead: <https://taehoonh.me/content/post/alternative-to-kable-function-when-knitting-to-ms-word.html>
+
+```{r table_01, message=FALSE, warning=FALSE, include=FALSE, paged.print=TRUE}
 penguin_sum <- penguins %>%
   group_by(island, year) %>%
   summarize(mean_body_mass_g = mean(body_mass_g, na.rm = TRUE)) %>% 
@@ -202,6 +206,7 @@ Figure 3.
 
 # Appendices
 
+```{=html}
 <!-- You might want to look into Bookdown if you want to do anything fancier
 with your manuscript. Bookdown allows for automatic Table and Figure numbering
 as well as cross referencing. That is you can create links between 'Fig 1' in
@@ -210,3 +215,4 @@ the figure number as you add or remove them from the document.
 
 I add this here because Appendices can require special handling by some 
 journals and Bookdown might allow you to do that automagically -->
+```
