@@ -1,10 +1,16 @@
 ---
+## I have commented out the default YAML title and removed the author and data 
+## info as I don't really as I don't want them to appear on the title page
+
 # title: "Generic Manuscript Template"
 
 # This sets up the format to match most journal requirements of 1" margins
 # and 12pt Times new Roman font. The catch is that to specify the font
-# you have to use xelatex latex_engine. Also important to note, most journals 
-# need Word files (or Latex) for copy editing.
+# you have to use the xelatex latex_engine. Also important to note, most 
+# journals need Word files (or Latex) for copy editing. You can simply
+# comment out lines (20, 21, 23 and 24) and uncomment the 
+# word_document output. 
+# 
 geometry: margin=1in
 header-includes:
     - \usepackage{setspace}
@@ -22,20 +28,27 @@ output:
 # output: html_document
 # output: word_document
 
-## Specify your csl here. You can use local or remote (local is better)
-## sources of csl files:
+## Specify your csl here. You can use local or remote 
+## sources of csl files but local is better.
+## below are two good sources of CSL files
 ## https://github.com/citation-style-language/styles
 ## https://www.zotero.org/styles
 
 # csl: https://raw.githubusercontent.com/citation-style-language/styles/master/ecology-letters.csl
 csl: https://www.zotero.org/styles/ecology-letters
 # csl: "ecology-letters.csl"
+
+# The .bib file allows you to add citations without Zotero and to share your
+# library with co-authors so that everyone has the same list of potential
+# references. Co-authors can just a new entries to the .bib file if they think
+# a citation is relevant
 bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE, echo=FALSE}
 knitr::opts_chunk$set
-
+# I like to put all of my library calls here, each on a seperate line. I am not 
+# sure if this is good or bad practice.
 library(tidyverse)
 library(palmerpenguins)
 library(GGally)
@@ -84,9 +97,13 @@ No conflicts of interest
 
 # Introduction
 
-Ecologists have long recognized that some combinations of species are regularly found together, while other combinations occur infrequently [@Cole:1949dz; @Elton:1946dl]. This format wraps the citation in brackets but if you want to reference the authors by name instead of just as a citation you can use this format instead (i.e., no square brackets around the cite key)
+## And example of adding citations in RMarkdown...
 
-@Cole:1949dz and @Elton:1946dl both found that
+Ecologists have long recognized that some combinations of species are regularly found together, while other combinations occur infrequently [@Cole:1949dz; @Elton:1946dl].
+
+The above format wraps the citation in brackets but if you want to reference the authors by name instead of just as a citation you can use this format instead (i.e., no square brackets around the cite key)
+
+@Cole:1949dz and @Elton:1946dl both found that blah blah blah
 
 # Methods
 
@@ -110,6 +127,13 @@ Statistical analyses were carried out in R 3.4.0 (R Core Team 2017). All code al
 # Discussion
 
 # References
+
+<!-- this littel code block is a comment that won't show up in the knitted 
+document. It is a good way to add hidden things and comments to your RMarkdown 
+document. For example... -->
+
+<!-- this little chunk of code (the ::: stuff below) forces the references to show up here. If you
+don't use this then they are put at the end of the document by default -->
 
 ::: {#refs}
 :::
@@ -137,9 +161,9 @@ kable(x = penguin_sum,
 
 # Figure Captions
 
-**Figure 1**.
+**Figure 1**. Pretty coloured dots about penguins
 
-**Figure 2**.
+**Figure 2**. Wow, even prettier plot about penguins that shows stuff
 
 \newpage
 
@@ -177,3 +201,12 @@ Figure 3.
 \newpage
 
 # Appendices
+
+<!-- You might want to look into Bookdown if you want to do anything fancier
+with your manuscript. Bookdown allows for automatic Table and Figure numbering
+as well as cross referencing. That is you can create links between 'Fig 1' in
+your manuscript that links to the actual figure and automatically the
+the figure number as you add or remove them from the document.
+
+I add this here because Appendices can require special handling by some 
+journals and Bookdown might allow you to do that automagically -->
